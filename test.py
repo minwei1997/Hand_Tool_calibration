@@ -1,15 +1,7 @@
 import numpy as np
+from numpy.linalg import inv
 
-A = np.zeros(shape=(1,3))
-b=np.zeros(shape=(1,1))
-
-t = np.array([3,3,3])
-A=t
-ans=np.vstack((A,t))
-
-g = np.array([1])
-b=g
-a2 = np.vstack((b,g))
-
+A=np.array([[22,0,0],[0,24,0],[0,0,26]])
+b=np.array([[143.39],[167.5885],[221]])
+ans = (inv(np.transpose(A).dot(A)).dot(np.transpose(A))).dot(b)
 print(ans)
-print(a2)
