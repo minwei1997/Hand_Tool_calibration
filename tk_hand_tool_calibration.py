@@ -1,6 +1,4 @@
 import tkinter as tk
-import cv2
-import PIL.Image, PIL.ImageTk
 from tkinter import messagebox
 import tkinter.ttk as ttk
 
