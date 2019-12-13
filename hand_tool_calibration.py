@@ -7,11 +7,11 @@ np.set_printoptions(precision=3)
 # Assume the origin poit is (1,0,0)
 # and 4 points are p1(3,0,0) p2(1,0,2) p3(1,2,0) p4(-1,0,0)
 # set four point 
-p1 = np.array([3.002,0,0])
-p2 = np.array([1,0,2])
-p3 = np.array([1,2,0])
-p4 = np.array([-1,0,0])
-p5 = np.array([1,0,-2]) 
+p1 = np.array([10.1,0.03,0])
+p2 = np.array([-10,0,0])
+p3 = np.array([0,0,10.1])
+p4 = np.array([0.11,10,0.03])
+p5 = np.array([0.1,-10,0]) 
 
 # Radius
 R = 10

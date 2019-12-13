@@ -1,7 +1,9 @@
 import numpy as np
 from numpy.linalg import inv
 
-A=np.array([[22,0,0],[0,24,0],[0,0,26]])
-b=np.array([[143.39],[167.5885],[221]])
-ans = (inv(np.transpose(A).dot(A)).dot(np.transpose(A))).dot(b)
+T7_6 = np.array([[1,0,0,0],[0,1,0,0],[0,0,1,190],[0,0,0,1]])
+tool_coor = np.array([-66.6869,413.713,227.0881,1]).reshape(4,1)
+
+ans = T7_6.dot(tool_coor)
+
 print(ans)

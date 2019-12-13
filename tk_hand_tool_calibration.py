@@ -180,5 +180,4 @@ class App:
 
 
 
-
 App(tk.Tk(),'My window')
