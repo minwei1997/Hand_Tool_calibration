@@ -70,16 +70,13 @@ class App:
         self.Entry_tool_length = tk.Entry(self.frm_left,width=8,textvariable=self.var_tool_length)     # Tool Length entry
         self.Entry_tool_length.grid(row = 1,column = 1,sticky=tk.W,padx=35) 
         # EntryBox for  (X, Y, Z, A, B, C)
+        self.entryText = [tk.StringVar() for i in range(6)]     # Create list of EntryText
         self.loop_box = []
-        J6_var = locals()
         for i in range(6):
-            J6_var['J6_var_{}'.format(i)] = tk.StringVar()
-            self.loop_box.append(tk.Entry(self.frm_left, width=8,textvariable=eval('J6_var_'+str(i))))
-            if i<3:
-                self.loop_box[i].grid(row = 3,column = i+1,sticky=tk.NW,padx=35)
-            else:
-                self.loop_box[i].grid(row = 5,column = i-3+1,sticky=tk.NW,padx=35)
-
+            self.loop_box.append(tk.Entry(self.frm_left, width=8, textvariable=self.entryText[i]))
+            row_num = 3 if i<3 else 5
+            self.loop_box[i].grid(row = row_num, column = i%3 + 1,sticky=tk.NW,padx=35)
+                
         #Button
         self.btn_Insert = tk.Button(self.frm_left, text='insert', width=8,
                     height=1, command = self.insert).grid(row=7,pady=40)
@@ -131,7 +128,9 @@ class App:
 
         # ins_count + 1 whenever the inert button click
         self.ins_count += 1
-
+        messagebox.showinfo('Done', 'successfully insert.')
+        for i in range(len(self.entryText)):
+            self.entryText[i].set('')
 
     # define the action for Calculate Button        
     def Calculate(self):
