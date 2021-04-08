@@ -167,6 +167,8 @@ class App:
         self.ans = (inv(np.transpose(self.A).dot(self.A)).dot(np.transpose(self.A))).dot(self.b)
         print(self.ans)
 
+        messagebox.showinfo('Done', 'Calibrated !')
+        
     # define the action for Cancel Button        
     def Cancel(self):
         self.window.destroy()
