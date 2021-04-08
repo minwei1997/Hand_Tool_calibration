@@ -129,4 +129,6 @@ dmypy.json
 .pyre/
 
 # ignore file
-
+test.py
+GetCoe_test.py
+HandToolCalibration_test.py

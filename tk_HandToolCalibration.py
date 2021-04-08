@@ -5,8 +5,8 @@ import tkinter.ttk as ttk
 from sympy import *
 import numpy as np
 from numpy.linalg import inv
-from Euler_calc import Euler_angle_to_Rotation_matix
-from end_point_calc import end_point_coor_of_tool
+from utils.EulerCalc import EulerAngle2Rot
+from utils.EndPointCalc import ToolEndCoord
 
 
 """"
@@ -34,18 +34,12 @@ class App:
         """ window setting initialize """
         self.window = window
         self.window.title(window_title)
-        self.window.geometry('800x550')
+        self.window.geometry('500x400')
 
         # Create Frame 
         self.frm = tk.Frame(self.window).pack()
         self.frm_left = tk.Frame(self.frm)
-        self.frm_right = tk.Frame(self.frm)
         self.frm_left.pack(side='left')      # Place the Left-frame on the left side of main-frame
-        self.frm_right.pack(side='right')    # Place the Right-frame on the right side of main-frame
-
-        # Create a canvas
-        self.canvas = tk.Canvas(self.frm_right, bg='pink', height=600, width=500)
-        self.canvas.pack()
 
         # Label
         self.Label_radius = tk.Label(self.frm_left,text='Radius : ', font = ('Times',14)).grid(row = 0)
@@ -77,7 +71,7 @@ class App:
             row_num = 3 if i<3 else 5
             self.loop_box[i].grid(row = row_num, column = i%3 + 1,sticky=tk.NW,padx=35)
                 
-        #Button
+        # Button
         self.btn_Insert = tk.Button(self.frm_left, text='insert', width=8,
                     height=1, command = self.insert).grid(row=7,pady=40)
 
@@ -117,8 +111,8 @@ class App:
             return
 
         # Calculate the end point coordinate of tool 
-        self.R06 = Euler_angle_to_Rotation_matix(self.A_angle, self.B_angle, self.C_angle)
-        self.end_coor_of_tool = end_point_coor_of_tool(self.R06,self.X_coor,self.Y_coor,self.Z_coor,self.tool_length)
+        self.R06 = EulerAngle2Rot(self.A_angle, self.B_angle, self.C_angle)
+        self.end_coor_of_tool = ToolEndCoord(self.R06,self.X_coor,self.Y_coor,self.Z_coor,self.tool_length)
 
         # end point coordinate of tool assign to an array
         if self.ins_count == 0:
@@ -176,7 +170,6 @@ class App:
     # define the action for Cancel Button        
     def Cancel(self):
         self.window.destroy()
-
 
 
 App(tk.Tk(),'My window')
